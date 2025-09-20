@@ -16,9 +16,9 @@ import api from "../utils/api";
 import * as auth from "../utils/auth";
 import { getToken, setToken, removeToken } from "../utils/tokens";
 
-import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
-import InfoTooltip from "../components/InfoTooltip/InfoTooltip";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
+import InfoTooltip from "./Pages/InfoTooltips/InfoTooltip";
 
 function ProtectedRoute({ isLoggedIn, children }) {
   return isLoggedIn ? children : <Navigate to="/signin" replace />;
