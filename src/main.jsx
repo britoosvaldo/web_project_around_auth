@@ -7,7 +7,7 @@ import App from "./components/App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HashRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter basename="/web_project_around_auth">
       <App />
     </HashRouter>
   </StrictMode>
