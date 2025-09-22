@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

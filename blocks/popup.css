@@ -94,7 +94,6 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 100%;
-  letter-spacing: 0%;
 }
 
 .popup__form-fieldset {
@@ -117,7 +116,6 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  letter-spacing: 0%;
 }
 
 .popup__save-button,

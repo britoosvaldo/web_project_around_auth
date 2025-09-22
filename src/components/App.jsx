@@ -19,10 +19,7 @@ import { getToken, setToken, removeToken } from "../utils/tokens";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import InfoTooltip from "./Pages/InfoTooltips/InfoTooltip";
-
-function ProtectedRoute({ isLoggedIn, children }) {
-  return isLoggedIn ? children : <Navigate to="/signin" replace />;
-}
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 export default function App() {
   const [popup, setPopup] = useState(null);
@@ -30,7 +27,7 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [booting, setBooting] = useState(true);
-  const [userEmail, setUserEmail] = useState(""); // 👈 email exibido no Header
+  const [userEmail, setUserEmail] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -139,7 +136,6 @@ export default function App() {
 
   // Boot
   useEffect(() => {
-    // carrega email salvo (não vem de /users/me)
     const savedEmail = localStorage.getItem("userEmail");
     if (savedEmail) setUserEmail(savedEmail);
 
@@ -180,8 +176,8 @@ export default function App() {
       setCards(initCards);
       setIsLoggedIn(true);
 
-      setUserEmail(email); // 👈 salva no estado
-      localStorage.setItem("userEmail", email); // 👈 persiste
+      setUserEmail(email);
+      localStorage.setItem("userEmail", email);
 
       navigate("/", { replace: true });
     } catch (err) {
@@ -219,7 +215,6 @@ export default function App() {
       value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}
     >
       <div className="page">
-        {/* Header: ele mesmo esconde email/SAIR em /signin e /signup */}
         <Header userEmail={userEmail} onLogout={handleLogout} />
 
         <Routes>
@@ -250,7 +245,6 @@ export default function App() {
           />
         </Routes>
 
-        {/* Footer escondido nas telas de auth */}
         {location.pathname !== "/signin" && location.pathname !== "/signup" && (
           <Footer />
         )}
